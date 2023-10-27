@@ -1,0 +1,42 @@
+name: bathypy
+
+channels:
+  - conda-forge
+
+# note that these are the developer dependencies,
+# if you only want the user dependencies, see
+# install_requires in setup.py
+dependencies:
+  - python=3.9
+  - pip
+  - cartopy
+  - descartes
+  - earthengine-api
+  - geemap
+  - geojson
+  - geopandas
+  - geos
+  - hydromt
+  - ipympl
+  - jupyter
+  - matplotlib
+  - netCDF4
+  - numba=0.54
+  - numpy
+  - pyarrow
+  - pyproj
+  - pytest
+  - pyyaml
+  - rasterio
+  - requests
+  - scipy
+  - scikit-image
+  - shapely
+  - tqdm
+  - xarray
+  - pip:
+      - eepackages
+      - fsspec
+      - gcsfs
+      - pytest_fixtures
+      - geemap
