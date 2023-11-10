@@ -9,13 +9,12 @@ import pandas as pd
 import geopandas as gpd
 import numpy as np
 
-
-from gwwstorage.open_altimetry import (
+from bathypy.open_altimetry import (
     get_track_ids,
     get_overpasses,
     get_icesat2_data_from_OA_api,
 )
-from gwwstorage.utils import (
+from bathypy.utils import (
     bounding_box_tiles,
     points_in_polygon_parallel,
     buffer_geometry,
