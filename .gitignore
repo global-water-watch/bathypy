@@ -1,3 +1,6 @@
+# IDE
+.idea
+
 # Byte-compiled / optimized / DLL files
 __pycache__/
 *.py[cod]
@@ -70,6 +73,8 @@ instance/
 
 # Sphinx documentation
 docs/_build/
+docs/_examples
+docs/_generated
 
 # PyBuilder
 .pybuilder/

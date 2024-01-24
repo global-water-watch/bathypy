@@ -1,0 +1,11 @@
+sphinx==5.3  # >6.0 causes bug in pydata_sphinx_theme
+sphinx_autosummary_accessors
+sphinxcontrib-programoutput
+sphinx_rtd_theme
+pydata_sphinx_theme
+ipykernel
+nbsphinx
+sphinx-gallery
+sphinx-design
+pandoc
+matplotlib
