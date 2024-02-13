@@ -5,10 +5,6 @@ Surface2Storage - Global Water Watch
     :target: https://pypi.python.org/pypi/gwwstorage
     :alt: Latest PyPI version
 
-.. image:: https://travis-ci.org/kragniz/cookiecutter-pypackage-minimal.png
-   :target: https://travis-ci.org/kragniz/cookiecutter-pypackage-minimal
-   :alt: Latest Travis CI build status
-
 This package provides several approaches for derivation of estimated hypsometry (i.e. relationships between water level, surface area and stored volume in lakes and reservoirs) from earth observations. Two general methods are available:
 1) derivation of hypsometry from a combination of surface area estimates and ICESat-2 water level estimates, paired on dates.
 2) derivation of geostatistically inference of bathyemtry using static terrain datasets and river topology.
@@ -21,7 +17,7 @@ Installation
 Prerequisites
 -------------
 
-Surface2Storage makes use of a number of cloud platforms to perform the processing. In detail the following is needed to run the methods in this repository.
+BathyPy makes use of a number of cloud platforms to perform the processing. In detail the following is needed to run the methods in this repository.
 
 * A Google Earth Engine (GEE) account, needed to perform large-scale satellite data analysis for surface water estimation.
 * A Google Cloud Storage: this is needed to store results from the GEE analyses and store intermediate ICESat-2 retrievals, retrieved from the ICESat-2 API, enabling its use in GEE.
@@ -44,8 +40,8 @@ First, clone the code with `git` and move into the cloned folder.
 
 .. code-block:: console
 
-    git clone git@github.com:global-water-watch/research-reservoir-storage.git
-    cd research-reservoir-storage
+    git clone git@github.com:global-water-watch/bathypy.git
+    cd bathypy
 
 Setup a virtual environment as follows:
 
@@ -105,9 +101,8 @@ You can also run in Docker. Note that it has to build the conda environment from
 
 .. code-block:: console
 
-    docker build . -f docker/notebooks/Dockerfile -t gww-rrs
-    docker run -p 8888:8888 -v ~/.config:/home/jovyan/.config -v $(pwd):/home/jovyan/work gww-rrs
-
+    docker build . -f docker/notebooks/Dockerfile -t bathypy-nb
+    docker run -p 8888:8888 -v ~/.config:/home/jovyan/.config -v $(pwd):/home/jovyan/work bathypy-nb
 
 Background and examples of methods
 ==================================
