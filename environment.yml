@@ -21,8 +21,9 @@ dependencies:
   - jupyter
   - matplotlib
   - netCDF4
-  - numba=0.54
-  - numpy
+#  - numba=0.54
+  - numba
+  - numpy>=1.23
   - pyarrow
   - pyproj
   - pytest

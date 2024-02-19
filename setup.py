@@ -24,7 +24,7 @@ setup(
     author_email="hessel.winsemius@deltares.nl",
     packages=find_packages(exclude=('tests',)),
     package_dir={"bathypy": "bathypy"},
-    python_requires=">=3.7",
+    python_requires=">=3.10",
     install_requires=[
         "aiohttp",
         "cartopy",

@@ -302,7 +302,8 @@ class Bathymetry:
 
 
         """
-        ds = data_catalog.get_rasterdataset(path_or_key=path_or_key, geom=self.gdf_polygon, **kwargs)
+        ds = data_catalog.get_rasterdataset(data_like=path_or_key, geom=self.gdf_polygon, **kwargs)
+        ds = ds.compute()
         self.set_topography(
             ds,
             add_flow_direction=add_flow_direction,
@@ -407,7 +408,13 @@ class Bathymetry:
         None, sets pyflwdir object on ``self.flwdir``
         """
         assert(self.ds_topography is not None), "Topography not yet downloaded, first run `get_topography`"
-        self.flwdir = hydromt.flw.flwdir_from_da(self.ds_topography[name].astype(np.uint8), ftype="d8")
+        da = self.ds_topography[name]
+        # try to set the spatial reference
+        da.raster.set_crs(self.ds_topography.spatial_ref.crs_wkt)
+        flwdir = hydromt.flw.flwdir_from_da(da.astype(np.uint8), ftype="d8")
+        self.flwdir = flwdir
+
+        # self.flwdir = hydromt.flw.flwdir_from_da(self.ds_topography[name].astype(np.uint8), ftype="d8")
 
     def get_path(self, xy):
         """
@@ -862,7 +869,11 @@ class Bathymetry:
         """
         bath = self.ds_topography["bathymetry"]
         bath.raster.set_nodata(np.nan)
+        # bath.raster.set_crs(self.ds_topography[])
         bath = bath.raster.interpolate_na(method=method, **kwargs)
+        # remove the spatial_ref property (from rioxarray)
+        if "spatial_ref" in bath.coords:
+            bath = bath.drop("spatial_ref")
         self.ds_topography["bathymetry"] = bath
 
 
