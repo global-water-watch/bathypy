@@ -4,7 +4,7 @@ from . import gww_requests
 from shapely.geometry import shape
 import copy
 import hydromt
-from hydromt.log import setuplog
+from hydromt._utils.log import _setuplog as setuplog
 import geopandas as gpd
 from pyflwdir import FlwdirRaster
 import matplotlib.pyplot as plt
@@ -15,7 +15,7 @@ from matplotlib.colors import LightSource
 
 
 # default logger
-logger = setuplog("Raster", log_level=10)
+logger = setuplog("./raster.log", log_level=10)
 
 def power_law(h, a, b, h0):
     return a*(h-h0)**b
@@ -411,7 +411,7 @@ class Bathymetry:
         da = self.ds_topography[name]
         # try to set the spatial reference
         da.raster.set_crs(self.ds_topography.spatial_ref.crs_wkt)
-        flwdir = hydromt.flw.flwdir_from_da(da.astype(np.uint8), ftype="d8")
+        flwdir = hydromt.gis.flw.flwdir_from_da(da.astype(np.uint8), ftype="d8")
         self.flwdir = flwdir
 
         # self.flwdir = hydromt.flw.flwdir_from_da(self.ds_topography[name].astype(np.uint8), ftype="d8")
